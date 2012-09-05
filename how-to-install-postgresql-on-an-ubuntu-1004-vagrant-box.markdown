@@ -1,3 +1,6 @@
+How to Install PostgreSQL on an Ubuntu 10.04 Vagrant Box
+========================================================
+
 Here's how to install PostgreSQL and have it run automatically at startup, on
 an Ubuntu 10.04 virtual machine using [Vagrant](http://vagrantup.com/). This
 took me a while to figure out:
