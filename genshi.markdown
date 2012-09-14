@@ -187,6 +187,17 @@ If Genshi's `allow_exec` option is `False` code blocks won't work.
 In code blocks you cannot use dot-notation to access dictionary items, or
 dictionary notation to access object attributes!
 
+### Tip: Using Code Blocks for Debugging
+
+You can use a code block to drop into pdb or ipdb from a Genshi template:
+
+    <?python
+      import ipdb; ipdb.set_trace()
+    ?>
+
+then from the pdb or ipdb shell do `pp dir()` to list all the names in the
+current context.
+
 Genshi Macros
 -------------
 
