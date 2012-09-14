@@ -229,6 +229,24 @@ Like other directives, `py:def` can also be used as an XML element:
       <p class="greeting">Hello, ${name}!</p>
     </py:def>
 
+### Tip: Define Macros in Child Templates
+
+If you have a base template that is included by many child templates, you might
+want the child templates to effect part of the base template, e.g. the title of
+the page.
+
+Define a macro in the child template:
+
+    <py:def function="page_heading">Edit: ${c.group.display_name}</py:def>
+
+and then use the macro in the base template, if it's defined:
+
+      <h1 py:if="defined('page_heading')" class="page_heading">
+        <img py:if="defined('page_logo')" id="page-logo" src="${page_logo()}"
+             alt="Page Logo" />
+        ${page_heading()}
+      </h1>
+
 Match Templates
 ---------------
 
@@ -285,22 +303,3 @@ put an extra `!`:
 
     <!-- !this is a comment too, but one that will be stripped from the output -->
     <!--! this is a comment too, but one that will be stripped from the output -->
-
-Tip: Define Functions in Child Templates
-----------------------------------------
-
-If you have a base template that is included by many child templates, you might
-want the child templates to effect part of the base template, e.g. the title of
-the page.
-
-Define a function in the child template:
-
-    <py:def function="page_heading">Edit: ${c.group.display_name}</py:def>
-
-and then use the function in the base template, if it's defined:
-
-      <h1 py:if="defined('page_heading')" class="page_heading">
-        <img py:if="defined('page_logo')" id="page-logo" src="${page_logo()}"
-             alt="Page Logo" />
-        ${page_heading()}
-      </h1>
