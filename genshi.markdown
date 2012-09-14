@@ -262,6 +262,19 @@ The `href` attribute is a Python expression, and directive attributes like
     <xi:include href="${name}.html" py:if="not in_popup"
                 py:for="name in ('foo', 'bar', 'baz')" />
 
+Comments
+--------
+
+You can use normal HTML/XML comments:
+
+    <!-- this is a comment -->
+
+If you want Genshi to strip the comment from the generated output,
+put an extra `!`:
+
+    <!-- !this is a comment too, but one that will be stripped from the output -->
+    <!--! this is a comment too, but one that will be stripped from the output -->
+
 Tip: Define Functions in Child Templates
 ----------------------------------------
 
