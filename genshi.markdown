@@ -135,12 +135,23 @@ None}` you would get:
 
     <li>Bar</li>
 
+`py:strip` conditionally strips the top-level element from the output.  
+I found a use for this when I wanted an img wrapped in a link when the
+link URL was defined, otherwise I just wanted the img not wrapped in
+the link, and I didn't want to repeat the img code twice in my template:
+
+    <a href="${organization_url()}"
+       py:strip="not defined('organization_url')">
+      <img src="${organization_logo()}"
+           alt="${organization_title()}"
+           title="${organization_title()}" />
+    </a>
+
 `py:content` replaces the content of the XML element with the result of
 evaluating the Python expression.  
 `py:replace` replaces the XML element itself with the result of evaluating the
 Python expression.  
-`py:strip` conditionally strips the top-level element from the output.  
-These three don't seem particularly useful to me.
+I haven't found uses for these two yet.
 
 Accessing Dictionary Items and Object Attributes
 ------------------------------------------------
