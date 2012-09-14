@@ -159,10 +159,10 @@ Testing whether a Name, Attribute or Key Exists
 Use **defined** or **value_of** to check whether a variable exists in the
 template context:
 
-`defined(name)` returns `True` if the name exists in the template
+`defined("name")` returns `True` if the name exists in the template
 context, `False` otherwise.
 
-`value_of(name, default=None)` returns the value of the name or if the name
+`value_of("name", default=None)` returns the value of the name or if the name
 doesn't exist returns the default.
 
 Use `hasattr()` and `getattr()` to check whether an object has an attribute.
