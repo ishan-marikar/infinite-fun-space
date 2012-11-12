@@ -135,12 +135,23 @@ None}` you would get:
 
     <li>Bar</li>
 
+`py:strip` conditionally strips the top-level element from the output.  
+I found a use for this when I wanted an img wrapped in a link when the
+link URL was defined, otherwise I just wanted the img not wrapped in
+the link, and I didn't want to repeat the img code twice in my template:
+
+    <a href="${organization_url()}"
+       py:strip="not defined('organization_url')">
+      <img src="${organization_logo()}"
+           alt="${organization_title()}"
+           title="${organization_title()}" />
+    </a>
+
 `py:content` replaces the content of the XML element with the result of
 evaluating the Python expression.  
 `py:replace` replaces the XML element itself with the result of evaluating the
 Python expression.  
-`py:strip` conditionally strips the top-level element from the output.  
-These three don't seem particularly useful to me.
+I haven't found uses for these two yet.
 
 Accessing Dictionary Items and Object Attributes
 ------------------------------------------------
@@ -159,10 +170,10 @@ Testing whether a Name, Attribute or Key Exists
 Use **defined** or **value_of** to check whether a variable exists in the
 template context:
 
-`defined(name)` returns `True` if the name exists in the template
+`defined("name")` returns `True` if the name exists in the template
 context, `False` otherwise.
 
-`value_of(name, default=None)` returns the value of the name or if the name
+`value_of("name", default=None)` returns the value of the name or if the name
 doesn't exist returns the default.
 
 Use `hasattr()` and `getattr()` to check whether an object has an attribute.
@@ -186,6 +197,17 @@ the terminal or log file, not into the template.
 If Genshi's `allow_exec` option is `False` code blocks won't work.  
 In code blocks you cannot use dot-notation to access dictionary items, or
 dictionary notation to access object attributes!
+
+### Tip: Using Code Blocks for Debugging
+
+You can use a code block to drop into pdb or ipdb from a Genshi template:
+
+    <?python
+      import ipdb; ipdb.set_trace()
+    ?>
+
+then from the pdb or ipdb shell do `pp dir()` to list all the names in the
+current context.
 
 Genshi Macros
 -------------
@@ -217,6 +239,24 @@ Like other directives, `py:def` can also be used as an XML element:
     <py:def function="greeting(name)">
       <p class="greeting">Hello, ${name}!</p>
     </py:def>
+
+### Tip: Define Macros in Child Templates
+
+If you have a base template that is included by many child templates, you might
+want the child templates to effect part of the base template, e.g. the title of
+the page.
+
+Define a macro in the child template:
+
+    <py:def function="page_heading">Edit: ${c.group.display_name}</py:def>
+
+and then use the macro in the base template, if it's defined:
+
+      <h1 py:if="defined('page_heading')" class="page_heading">
+        <img py:if="defined('page_logo')" id="page-logo" src="${page_logo()}"
+             alt="Page Logo" />
+        ${page_heading()}
+      </h1>
 
 Match Templates
 ---------------
@@ -262,21 +302,15 @@ The `href` attribute is a Python expression, and directive attributes like
     <xi:include href="${name}.html" py:if="not in_popup"
                 py:for="name in ('foo', 'bar', 'baz')" />
 
-Tip: Define Functions in Child Templates
-----------------------------------------
+Comments
+--------
 
-If you have a base template that is included by many child templates, you might
-want the child templates to effect part of the base template, e.g. the title of
-the page.
+You can use normal HTML/XML comments:
 
-Define a function in the child template:
+    <!-- this is a comment -->
 
-    <py:def function="page_heading">Edit: ${c.group.display_name}</py:def>
+If you want Genshi to strip the comment from the generated output,
+put an extra `!`:
 
-and then use the function in the base template, if it's defined:
-
-      <h1 py:if="defined('page_heading')" class="page_heading">
-        <img py:if="defined('page_logo')" id="page-logo" src="${page_logo()}"
-             alt="Page Logo" />
-        ${page_heading()}
-      </h1>
+    <!-- !this is a comment too, but one that will be stripped from the output -->
+    <!--! this is a comment too, but one that will be stripped from the output -->
