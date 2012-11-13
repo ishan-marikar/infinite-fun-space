@@ -7,7 +7,7 @@ Inspired by [usevim.com's post](http://usevim.com/2012/11/09/vim-101-options/) I
 Setting and Resetting Options
 -----------------------------
 
-*  `:set option=value` Set the value of an optio.  
+*  `:set option=value` Set the value of an option.  
 *  `:set option+=value` Append to a string option or add to a number option.  
 *  `:set option-=value` Remove from a string option or subtract from a number
    option.
