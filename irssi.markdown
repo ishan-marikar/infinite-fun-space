@@ -35,7 +35,7 @@ To switch between windows:
 
 Your irssi config file is at:
 
-   ~/.irssi/config
+    ~/.irssi/config
 
 The config file is not very human readable so it's easiest to edit your
 settings from within irssi instead of editing the config file directly:
@@ -55,7 +55,7 @@ Sets setting `<key>` to `<value>`.
 Tab-complete works for setting keys (and for other things in irssi, like
 commands and server, channel and user names).
 
-   /save
+    /save
 
 Save your current config settings to file.
 
@@ -70,6 +70,7 @@ Reload your saved settings from file.
     /set alternate_nick seanh
     /set user_name seanh
     /set real_name "Sean Hammond"
+    /save
 
 
 ## IRC Networks & Servers
@@ -88,13 +89,13 @@ yourself, you have to define both an IRC network and a server on that network:
 
 `/server list`  List all servers the irssi knows about, connected or not.
 
-`/connect freenode` Also connects to freenode without disconnecting from
-current servers.
+`/connect freenode` Connect to freenode without disconnecting from current
+servers.
 
 `/disconnect`   Disconnect from the current server.
 
 `/disconnect freenode [message]`    Disconnect from freenode with an optional
-bye message/
+bye message.
 
 `/discconect * [message]`   Disconnect from all servers.
 
@@ -103,16 +104,17 @@ bye message/
 
 To join a channel:
 
-   /join #channel
+    /join #channel
 
 To leave a channel:
 
-   /part #channel [message]
+    /part #channel [message]
 
 
-### Automatically Join Channels
+### Automatically Join Channels when Irssi Starts
 
-   /channel add -auto #ubuntu freenode
+    /channel add -auto #ubuntu freenode
+    /save
 
 
 ### Join multiple channels in the same window
@@ -142,22 +144,21 @@ and which channels share the same window) do:
     /layout save
     /save
 
-`/layout_save` saves the window locations of your channels so if you join a
-channel again it appears in the same window.
+`/layout_save` saves the window locations of your channels so if you leave a
+channel and later join it again, it appears in the same window.
 
 The way to get irssi to open two channels in the same window automatically on
 startup seems to be:
 
 1. If you already have both channels open in different windows, leave one of
    them: `/part channel_two`
-2. `/join #channel_one`
+2. `/join #channel_one` if you haven't already, if you have then switch to its
+   window
 3. `/join -window #channel_two`
 4. `/layout save`
 5. `/save`
 6. If you haven't already, tell irssi to auto join the channels on open:
-
-       /channel add #channel_one network
-       /channel add #channel_two network
+   `/channel add #channel_one network`, `/channel add #channel_two network`.
 
 Now if you `/quit` and restart irssi, the two channels should automatically
 open in the same window.
@@ -167,7 +168,7 @@ open in the same window.
 
 Get notified when someones away status changes:
 
-   /notify -away kindly freenode 
+    /notify -away kindly freenode 
 
 To remove a notification:
 
@@ -203,13 +204,17 @@ Remove a hilight:
 ## Automatic Logging
 
     /set autolog on
-    /set autolog_path = ~/irclogs/$tag/$0.log 
+    /set autolog_path = ~/.irssi/logs/$X/$tag/$0.log
+    /save
 
 All messages to a channel or to you privately (but not other types of
 messages) will be logged to files
 
 
 ## Away Logging
+
+Irssi can conveniently print any important messages that happened while you
+were away to the status window when you come back.
 
 To set yourself away do:
 
@@ -222,12 +227,13 @@ To set yourself as available again do:
 
     /away
 
-Irssi logs important messages (by default: private messages to you and messages
-that match any of our hilights) when you're away and prints them to the status
-window when come back.
+By default private messages to you and messages that match any of our hilights
+are logged while you're away, and printed to the status window when you come
+back. I think these are the default settings:
 
     /set awaylog_level = msgs hilight
     /set awaylog_file = ~/.irssi/away.log
+    /save
 
 
 ## IRC Commands
@@ -240,7 +246,7 @@ window when come back.
 
 `/msg` Send a private message to someone
 
-`/topic` See the channel's topi
+`/topic` See the channel's topic
 
 
 TODO:
