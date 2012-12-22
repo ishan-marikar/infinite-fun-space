@@ -183,6 +183,7 @@ Print a list of your configured notifications to the status window:
 
     /notify -list
 
+TODO: Where do these notifications actually show up?
 
 ## Hilights
 
@@ -200,6 +201,18 @@ Remove a hilight:
 
     /dehilight 1
 
+
+## Beep on Mention
+
+Irssi will highlight your nick when it's mentioned in a channel by default,
+but that doesn't help much unless you're looking at the channel
+window when it happens. To get irssi to beep when your nick is mentioned:
+
+    /set bell_beeps ON
+    /set beep_msg_level MSGS NOTICES DCC DCCMSGS HILIGHT
+
+What "beep" actually means (play a sound, flash the terminal window) depends
+on your terminal emulator's settings.
 
 ## Automatic Logging
 
