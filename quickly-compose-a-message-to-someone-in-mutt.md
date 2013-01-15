@@ -1,3 +1,6 @@
+Quickly compose a message to someone in mutt
+============================================
+
 Open mutt to write and send a mail to shannon (a name from my mutt
 address book) right away, without opening any mailbox first:
 
