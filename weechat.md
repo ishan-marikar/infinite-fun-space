@@ -21,6 +21,7 @@ Installing
 Ubuntu 12.04's default version of weechat is quite old, so install their PPA:
 
     sudo add-apt-repository ppa:nesthib/weechat-stable
+    sudo apt-get update
 
 Then install weechat, making sure you get the curses UI and the plugins and
 scripts:
