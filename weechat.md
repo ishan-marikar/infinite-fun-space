@@ -134,7 +134,7 @@ to a server, do:
 
 Tell weechat what nicks to use on a server, in order of preference:
 
-    /set irc.server.freenode.nicks = "seanh,seanh_,seanh2__"
+    /set irc.server.freenode.nicks = "seanh,seanh_,seanh__"
 
 To automatically identify yourself to the irc server after connecting, do:
 
