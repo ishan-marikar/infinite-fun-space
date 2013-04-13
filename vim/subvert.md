@@ -14,7 +14,7 @@ from Tim Pope's [abolish.vim](https://github.com/tpope/vim-abolish) plugin.
 
 `:S/m{ouse,ice}` matches `MOUSE`, `Mouse`, `mouse`, `MICE`, `Mice` or `mice`.
 
-`:S/{pumpkin,mouse,user} matches `PUMPKIN`, `Pumpkin`, `pumpkin`, `MOUSE`,
+`:S/{pumpkin,mouse,user}` matches `PUMPKIN`, `Pumpkin`, `pumpkin`, `MOUSE`,
 `Mouse`, `mouse`, `USER`, `User` and `user`.
 
 `:S/insert_mode` matches both `insert_mode` and `InsertMode` (search words with
