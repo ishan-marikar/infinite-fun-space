@@ -1,7 +1,7 @@
 Smart Search with Subvert
 =========================
 
-Notes from <http://vimcasts.org/episodes/smart-search-with-subvert/>.
+Notes from <http://vimcasts.org/episodes/smart-search-with-subvert/>
 
 Also see `:help :Subvert`.
 
@@ -20,6 +20,10 @@ from Tim Pope's [abolish.vim](https://github.com/tpope/vim-abolish) plugin.
 `:S/insert_mode` matches both `insert_mode` and `InsertMode` (search words with
 underscores in them automatically match their CamelCase equivalents).
 
+Typing `/<C-r>/` will paste the last search pattern used (from the search
+register) into the command line, so you can see what Subvert actually searched
+for.
+
 
 Search across multiple files
 ----------------------------
@@ -27,12 +31,3 @@ Search across multiple files
 `:S/package_create/ **/*.py` searches for `package_create` in all `*.py` files
 in Vim's current working directory and below. The matches are placed into the
 quickfix list, do `:copen` to get a list of them.
-
-`:S/pattern/{file}` searches in the specified file(s) instead of in the current
-file.
-
-`:S/pattern/replacement/flags` does a search and replace.
-
-Typing `/<C-r>/` will paste the last search pattern used (from the search
-register) into the command line, so you can see what Subvert actually searched
-for.
