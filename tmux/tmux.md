@@ -75,6 +75,14 @@ then restart tmux. `-g` means "global" which means set this option for all new
 tmux sessions.
 
 
+### Install the configuration file from this folder
+
+To install [the .tmux.conf file from this folder](tmux.conf), run this command
+in a shell:
+
+    $ wget 'https://raw.github.com/seanh/content-addressable/master/tmux/tmux.conf' -O ~/.tmux.conf
+
+
 ### Reload your tmux.conf while tmux is running
 
 If you've changed your `.tmux.conf` file, you can reload it without leaving
