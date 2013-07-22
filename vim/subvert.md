@@ -31,3 +31,35 @@ Search across multiple files
 `:S/package_create/ **/*.py` searches for `package_create` in all `*.py` files
 in Vim's current working directory and below. The matches are placed into the
 quickfix list, do `:copen` to get a list of them.
+
+
+Smart Substitutions
+-------------------
+
+<http://vimcasts.org/episodes/supercharged-substitution-with-subvert/>
+
+    :[range]Subvert/target/replacement/[flags]
+    :[range]S/target/replacement/[flags]
+
+`[range]` and `[flags]` are the same as with Vim's normal substitute command,
+but `target` and `replacement` are different. For example, this will replace
+`pumpkin -> potato` and `Pumpkin -> Potato` at the same time:
+
+    :%S/pumpkin/potato/gc
+
+This replace `pumpkin -> potato`, `pumpkins -> potatoes`, `Pumpkin -> Potato`
+and `Pumpkins -> Potatoes`:
+
+    :%S/pumpkin{,s}/potato{,es}/gc
+
+This replaces `mouse -> trackpad` and `mice -> trackpads`:
+
+    :%S/m{ouse,ice{/trackpad{,s}/gc
+
+This replaces `insert_mode -> replace_mode` and `InsertMode -> ReplaceMode`:
+
+    :%S/insert_mode/replace_mode/gc
+
+Replace all occurrences of `one` with `ay` and `two` with `bee`:
+
+    :%S/{one,two}/{ay,bee}/gc
