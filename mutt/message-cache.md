@@ -1,9 +1,3 @@
----
-title: How to use mutt's message cache
-layout: post
-type: text
----
-
 Mutt can cache the headers and bodies of email messages, which makes searching
 mail folders much faster (especially searching the full bodies of an IMAP
 folder). Put something like this in your muttrc file:
