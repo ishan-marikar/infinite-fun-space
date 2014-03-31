@@ -1,7 +1,7 @@
-Content Addressable
-===================
+Infinite Fun Space
+==================
 
-_Content Addressable_ is my personal notebook, a collection of files for my own
+_Infinite Fun Space_ is my personal notebook, a collection of files for my own
 benefit. You're welcome to poke around.
 
 A GitHub repository is the perfect place for a notebook. You can browse the
